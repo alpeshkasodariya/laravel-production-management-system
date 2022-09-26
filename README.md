@@ -1,4 +1,4 @@
-# Production Management System with Laravel (OMS)
+# Laravel Production Management System  (LLMS)
 
 ## About this application
 
@@ -37,4 +37,4 @@ php artisan migrate
 linkedin: alpeshkasodariya <br>
 Email: at.kasodariya@gmail.com
 
-# laravel-production-management-system
+# Laravel Production Management System  (LLMS)
