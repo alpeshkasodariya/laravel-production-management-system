@@ -3,7 +3,7 @@
 ## About this application
 
 This application is simple production management system. 
-#### Framework: Laravel 5.3
+#### Framework: Laravel 5.5
 #### Language: PHP 5.7
 
  
