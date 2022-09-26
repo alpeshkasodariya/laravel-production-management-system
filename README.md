@@ -35,4 +35,6 @@ php artisan migrate
  
 ### Contact me 
 linkedin: alpeshkasodariya <br>
-Email: at.kasodariya@gmail.com# laravel-production-management-system
+Email: at.kasodariya@gmail.com
+
+# laravel-production-management-system
