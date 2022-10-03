@@ -73,11 +73,22 @@
             </li>
             <li @if ($pageSlug == 'kachomal') class="active " @endif>
                 <a href="{{ URL::to('me-admin/kachomal') }}">
-                   <i class="tim-icons icon-settings" ></i>
+                   <i class="tim-icons icon-sound-wave" ></i>
                      <p>{{ __('All Kachomal') }}</p>
                 </a> 
             </li>
-            
+            <li @if ($pageSlug == 'kachomalstock') class="active " @endif>
+                <a href="{{ URL::to('me-admin/kachomalstock') }}">
+                   <i class="tim-icons icon-bag-16" ></i>
+                     <p>{{ __('All Kachomal Stock') }}</p>
+                </a> 
+            </li>
+            <li @if ($pageSlug == 'kachomaldeliver') class="active " @endif>
+                <a href="{{ URL::to('me-admin/kachomaldeliver') }}">
+                   <i class="tim-icons icon-app" ></i>
+                     <p>{{ __('Deliver Kachomal') }}</p>
+                </a> 
+            </li>
             <li>
                     <a href="{{ route('logout') }}"><i class="tim-icons icon-button-power"></i> Log out</a>
                    

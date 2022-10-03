@@ -14,12 +14,12 @@ use Jenssegers\Agent\Agent;
  */
 
 
-Route::get('/', 'FrontController@index');
+Route::get('/', 'FrontController@index')->middleware('cors');;
 
 
 //guide end
 
-Route::group(array('prefix' => 'me-admin'), function () {
+Route::group(array('prefix' => 'me-admin','middleware' => ['cors']), function () {
     Auth::routes();
     # Error pages should be shown without requiring login
     Route::get('404', function () {
@@ -101,14 +101,8 @@ Route::group(array('prefix' => 'me-admin'), function () {
         Route::post('{production}/edit', 'ProductionController@update');
         Route::post('{production}/delete', array('as' => 'production.destroy', 'uses' => 'ProductionController@destroy'));
     });
-
-    Route::group(array('prefix' => 'reports', 'middleware' => ['auth', 'carer'], 'as' => 'me-admin.'), function () {
-        //  Route::resource('stress', 'StressController', ['except' => ['show']]);
-        Route::get('/', array('as' => 'reports', 'uses' => 'ReportsController@index'));
-    });
     
-    
-    Route::group(array('prefix' => 'kachomal', 'middleware' => ['auth'], 'as' => 'me-admin.'), function () {
+      Route::group(array('prefix' => 'kachomal', 'middleware' => ['auth'], 'as' => 'me-admin.'), function () {
         Route::resource('kachomal', 'KachomalController', ['except' => ['show']]);
         Route::get('/', array('as' => 'kachomal', 'uses' => 'KachomalController@index'));
         Route::get('create', array('as' => 'create/kachomal', 'uses' => 'KachomalController@create'));
@@ -118,7 +112,7 @@ Route::group(array('prefix' => 'me-admin'), function () {
         Route::post('{kachomal}/delete', array('as' => 'kachomal.destroy', 'uses' => 'KachomalController@destroy'));
     });
     
-    Route::group(array('prefix' => 'kachomaldeliver', 'middleware' => ['auth'], 'as' => 'me-admin.'), function () {
+     Route::group(array('prefix' => 'kachomaldeliver', 'middleware' => ['auth'], 'as' => 'me-admin.'), function () {
         Route::resource('kachomaldeliver', 'KachomalDeliverController', ['except' => ['show']]);
         Route::get('/', array('as' => 'kachomaldeliver', 'uses' => 'KachomalDeliverController@index'));
         Route::get('create', array('as' => 'create/kachomaldeliver', 'uses' => 'KachomalDeliverController@create'));
@@ -138,6 +132,11 @@ Route::group(array('prefix' => 'me-admin'), function () {
         Route::post('{kachomalstock}/delete', array('as' => 'kachomalstock.destroy', 'uses' => 'KachomalStockController@destroy'));
     });
     
+
+    Route::group(array('prefix' => 'reports', 'middleware' => ['auth', 'carer'], 'as' => 'me-admin.'), function () {
+        //  Route::resource('stress', 'StressController', ['except' => ['show']]);
+        Route::get('/', array('as' => 'reports', 'uses' => 'ReportsController@index'));
+    });
 });
 
 Route::get('404', function () {

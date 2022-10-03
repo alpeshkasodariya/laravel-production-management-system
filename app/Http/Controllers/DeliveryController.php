@@ -33,10 +33,12 @@ class DeliveryController extends Controller {
         $total[3]=Delivery::select('chiki_500')->sum('chiki_500');
         $total[4]=Delivery::select('ghari_250')->sum('ghari_250');
         $total[5]=Delivery::select('ghari_500')->sum('ghari_500');
-        $total[6]=Delivery::select('kaju500')->sum('kaju500');
-        $total[7]=Delivery::select('badam500')->sum('badam500');
-        $total[8]=Delivery::select('total_kg')->sum('total_kg');
-        $total[9]=Delivery::select('total_price_pending')->sum('total_price_pending');
+        $total[6]=Delivery::select('angir_250')->sum('angir_250');
+        $total[7]=Delivery::select('angir_500')->sum('angir_500');
+        $total[8]=Delivery::select('kaju500')->sum('kaju500');
+        $total[9]=Delivery::select('badam500')->sum('badam500'); 
+        $total[10]=Delivery::select('total_kg')->sum('total_kg');
+        $total[11]=Delivery::select('total_price_pending')->sum('total_price_pending');
      
         $totalprice=array();
         $totalprice[0]=$total[0]*170;
@@ -45,8 +47,10 @@ class DeliveryController extends Controller {
         $totalprice[3]=$total[3]*340;
         $totalprice[4]=$total[4]*150;
         $totalprice[5]=$total[5]*300; 
-        $totalprice[6]=$total[6]*370;
-        $totalprice[7]=$total[7]*370;
+        $totalprice[6]=$total[6]*200;
+        $totalprice[7]=$total[7]*400; 
+        $totalprice[8]=$total[8]*370;
+        $totalprice[9]=$total[9]*370;
 
         
         
@@ -54,8 +58,9 @@ class DeliveryController extends Controller {
         $fullKg[0]=(($total[0]*250) + ($total[1]*500))/ 1000;
         $fullKg[1]=(($total[2]*250) + ($total[3]*500))/ 1000;
         $fullKg[2]=(($total[4]*250) + ($total[5]*500))/ 1000;
-        $fullKg[3]=($total[6]*500)/ 1000;
-        $fullKg[4]=($total[7]*500)/ 1000;
+        $fullKg[3]=(($total[6]*250) + ($total[7]*500))/ 1000;
+        $fullKg[4]=($total[8]*500)/ 1000;
+        $fullKg[5]=($total[9]*500)/ 1000;
         // Show the page
         return view('delivery.index', compact('deliverys','total','totalprice','fullKg'));
     }
@@ -77,10 +82,10 @@ class DeliveryController extends Controller {
      */
     public function store(Request $request) {
         $delivery = new Delivery($request->all());
-        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500))/1000;
+        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500)+($request->angir_250 * 250)+($request->angir_500 * 500))/1000;
          
         
-        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->kaju500 * 370)+($request->badam500 * 370);
+        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->kaju500 * 370)+($request->badam500 * 370)+($request->angir_250 * 200)+($request->angir_500 * 400);
         $delivery->total_kg=$kg;
         $delivery->total_price_pending=$total;
         
@@ -121,10 +126,11 @@ class DeliveryController extends Controller {
 
     public function update($id, Request $request) {
         $delivery = Delivery::findOrFail($id);
-         $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500))/1000;
-         
+         $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->angir_250 * 250)+($request->angir_500 * 500))/1000;
+          
+       
+        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->kaju500 * 370)+($request->badam500 * 370)+($request->angir_250 * 200)+($request->angir_500 * 400);
         
-        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300);
         $delivery->total_kg=$kg;
         $delivery->total_price_pending=$total;
         
@@ -136,6 +142,8 @@ class DeliveryController extends Controller {
         $delivery->ghari_500= $request->ghari_500; 
         $delivery->kaju500= $request->kaju500;
         $delivery->badam500= $request->badam500; 
+        $delivery->angir_250= $request->angir_250;
+        $delivery->angir_500= $request->angir_500; 
         
         if ($delivery->update()) {
             return redirect('me-admin/delivery')->with('success', 'delivery was successfully updated.');

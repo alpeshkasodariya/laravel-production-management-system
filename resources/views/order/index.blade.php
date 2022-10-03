@@ -28,6 +28,8 @@
                                 <th scope="col">{{ __('c_500') }}</th> 
                                 <th scope="col">{{ __('g_250') }}</th> 
                                 <th scope="col">{{ __('g_500') }}</th> 
+                                <th scope="col">{{ __('angir_250') }}</th> 
+                                <th scope="col">{{ __('angir_500') }}</th> 
                                 <th scope="col">{{ __('Kaju') }}</th> 
                                 <th scope="col">{{ __('Badam') }}</th> 
                                 <th scope="col">{{ __('total_kg') }}</th> 
@@ -49,6 +51,8 @@
                                 <td>{{ $st->chiki_500 }}</td>
                                 <td>{{ $st->ghari_250 }}</td>
                                 <td>{{ $st->ghari_500 }}</td>
+                                <td>{{ $st->angir_250 }}</td>
+                                <td>{{ $st->angir_500 }}</td>
                                 <td>{{ $st->kaju500 }}</td>
                                 <td>{{ $st->badam500 }}</td>
                                 <td>{{ $st->total_kg }}</td>
@@ -89,6 +93,7 @@
                                 <th scope="col" colspan="2">{{ __('kajukatri') }}</th>  
                                 <th scope="col" colspan="2">{{ __('chiki') }}</th>  
                                 <th scope="col" colspan="2">{{ __('ghari') }}</th>  
+                                <th scope="col" colspan="2">{{ __('Angir') }}</th> 
                                  <th scope="col">{{ __('Kaju') }}</th>  
                                 <th scope="col">{{ __('Badam') }}</th> 
                                  
@@ -102,6 +107,8 @@
                                 <th scope="col">{{ __('500gm') }}</th>  
                                 <th scope="col">{{ __('250gm') }}</th>  
                                 <th scope="col">{{ __('500gm') }}</th>  
+                                <th scope="col">{{ __('250gm') }}</th>  
+                                <th scope="col">{{ __('500gm') }}</th> 
                                 <th scope="col">{{ __('500gm') }}</th>  
                                 <th scope="col">{{ __('500gm') }}</th> 
                             </tr>
@@ -117,6 +124,8 @@
                                 <td><?php echo $total[5] ?></td>
                                 <td><?php echo $total[6] ?></td>
                                 <td><?php echo $total[7] ?></td>
+                                <td><?php echo $total[8] ?></td>
+                                <td><?php echo $total[9] ?></td>
                             </tr>
                             <tr> 
                                 <td >Total  Box Amount(Rs.)</td>  
@@ -128,28 +137,31 @@
                                 <td><?php echo $totalprice[5] ?></td> 
                                 <td><?php echo $totalprice[6] ?></td> 
                                 <td><?php echo $totalprice[7] ?></td> 
+                                <td><?php echo $totalprice[8] ?></td>
+                                <td><?php echo $totalprice[9] ?></td>
                             </tr>
                             <tr> 
                                 <td >Total  Amount (Rs.)</td>
                                 <td colspan="2"><?php echo $fulltotalprice[0] ?></td>  
                                 <td colspan="2"><?php echo $fulltotalprice[1] ?></td>  
                                 <td colspan="2"><?php echo $fulltotalprice[2] ?></td>  
-                                  <td><?php echo $fulltotalprice[3] ?></td>
-                                 <td><?php echo $fulltotalprice[4] ?></td>
+                                <td colspan="2"><?php echo $fulltotalprice[3] ?></td>
+                                  <td><?php echo $fulltotalprice[4] ?></td>
+                                 <td><?php echo $fulltotalprice[5] ?></td>
                             </tr>  
                              <tr> 
                                 <td>Total Price (Rs.)</td>
-                                <td colspan="8" class="bluecolor"><b><?php echo $total[9]; ?><small>(Rs)</small></b></td>   
+                                <td colspan="10" class="bluecolor"><b><?php echo $total[11]; ?><small>(Rs)</small></b></td>   
                                   
                             </tr> 
                             <tr> 
                                 <td>Total Paid Price (Rs.) </td>
-                                <td colspan="8" class="greencolor"><b><?php echo $total[10]; ?><small>(Rs)</small></b></td>   
+                                <td colspan="10" class="greencolor"><b><?php echo $total[12]; ?><small>(Rs)</small></b></td>   
                                  
                             </tr> 
                             <tr> 
                                 <td>Total Pending Price (Rs.)</td>
-                                <td colspan="8" class="redcolor"><b><?php echo $total[11]; ?><small>(Rs)</small></b></td>   
+                                <td colspan="8" class="redcolor"><b><?php echo $total[13]; ?><small>(Rs)</small></b></td>   
                                 
                             </tr> 
                             <tr> 
@@ -157,12 +169,13 @@
                                 <td colspan="2"><?php echo $fullKg[0] ?></td>  
                                 <td colspan="2"><?php echo $fullKg[1] ?></td>  
                                 <td colspan="2"><?php echo $fullKg[2] ?></td> 
-                                <td ><?php echo $fullKg[3] ?></td> 
+                                <td colspan="2"><?php echo $fullKg[3] ?></td> 
                                 <td ><?php echo $fullKg[4] ?></td> 
+                                <td ><?php echo $fullKg[5] ?></td> 
                             </tr>  
                             <tr> 
                                 <td>Total KG</td>
-                                <td colspan="8" class="yellowcolor"><?php echo $total[8]; ?></td>   
+                                <td colspan="10" class="yellowcolor"><?php echo $total[10]; ?></td>   
                                  
                             </tr> 
                         </tbody>  

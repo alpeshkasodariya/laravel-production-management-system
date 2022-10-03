@@ -35,10 +35,12 @@ class ProductionController extends Controller {
         $total[3]=Production::select('chiki_500')->sum('chiki_500');
         $total[4]=Production::select('ghari_250')->sum('ghari_250');
         $total[5]=Production::select('ghari_500')->sum('ghari_500');
-        $total[6]=Order::select('kaju500')->sum('kaju500');
-        $total[7]=Order::select('badam500')->sum('badam500');
-        $total[8]=Production::select('total_kg')->sum('total_kg');
-        $total[9]=Production::select('total_price')->sum('total_price'); 
+        $total[6]=Production::select('angir_250')->sum('angir_250');
+        $total[7]=Production::select('angir_500')->sum('angir_500');
+        $total[8]=Production::select('kaju500')->sum('kaju500');
+        $total[9]=Production::select('badam500')->sum('badam500');
+        $total[10]=Production::select('total_kg')->sum('total_kg');
+        $total[11]=Production::select('total_price')->sum('total_price'); 
         
         $totalprice=array();
         $totalprice[0]=$total[0]*170;
@@ -47,23 +49,27 @@ class ProductionController extends Controller {
         $totalprice[3]=$total[3]*340;
         $totalprice[4]=$total[4]*150;
         $totalprice[5]=$total[5]*300; 
-        $totalprice[6]=$total[4]*370;
-        $totalprice[7]=$total[5]*370; 
+        $totalprice[6]=$total[6]*200;
+        $totalprice[7]=$total[7]*400; 
+        $totalprice[8]=$total[8]*370;
+        $totalprice[9]=$total[9]*370;
         
         
         $fulltotalprice=array();
         $fulltotalprice[0]=$totalprice[0]+$totalprice[1];
         $fulltotalprice[1]=$totalprice[2]+$totalprice[3];
-        $fulltotalprice[2]=$totalprice[4]+$totalprice[5];
-        $fulltotalprice[3]=$totalprice[6];
-        $fulltotalprice[4]=$totalprice[7];
+        $fulltotalprice[2]=$totalprice[4]+$totalprice[5]; 
+        $fulltotalprice[3]=$totalprice[6]+$totalprice[7];
+        $fulltotalprice[4]=$totalprice[8];
+        $fulltotalprice[5]=$totalprice[9];
         
         $fullKg=array();
         $fullKg[0]=(($total[0]*250) + ($total[1]*500))/ 1000;
         $fullKg[1]=(($total[2]*250) + ($total[3]*500))/ 1000;
         $fullKg[2]=(($total[4]*250) + ($total[5]*500))/ 1000;
-        $fullKg[3]=($total[6]*500)/ 1000;
-        $fullKg[4]=($total[7]*500)/ 1000;
+        $fullKg[3]=(($total[6]*250) + ($total[7]*500))/ 1000;
+        $fullKg[4]=($total[8]*500)/ 1000;
+        $fullKg[5]=($total[9]*500)/ 1000;
         
         $orderbox=array();
         $orderbox[0]=Order::select('kajukatri_250')->sum('kajukatri_250');
@@ -72,10 +78,12 @@ class ProductionController extends Controller {
         $orderbox[3]=Order::select('chiki_500')->sum('chiki_500');
         $orderbox[4]=Order::select('ghari_250')->sum('ghari_250');
         $orderbox[5]=Order::select('ghari_500')->sum('ghari_500');
-        $orderbox[6]=Order::select('kaju500')->sum('kaju500');
-        $orderbox[7]=Order::select('badam500')->sum('badam500');
-        $orderbox[8]=Order::select('total_kg')->sum('total_kg');
-        $orderbox[9]=Order::select('total_price')->sum('total_price');
+        $orderbox[6]=Order::select('angir_250')->sum('angir_250');
+        $orderbox[7]=Order::select('angir_500')->sum('angir_500');
+        $orderbox[8]=Order::select('kaju500')->sum('kaju500');
+        $orderbox[9]=Order::select('badam500')->sum('badam500');
+        $orderbox[10]=Order::select('total_kg')->sum('total_kg');
+        $orderbox[11]=Order::select('total_price')->sum('total_price');
         
         $deliverbox=array();
         $deliverbox[0]=Delivery::select('kajukatri_250')->sum('kajukatri_250');
@@ -84,10 +92,12 @@ class ProductionController extends Controller {
         $deliverbox[3]=Delivery::select('chiki_500')->sum('chiki_500');
         $deliverbox[4]=Delivery::select('ghari_250')->sum('ghari_250');
         $deliverbox[5]=Delivery::select('ghari_500')->sum('ghari_500');
-        $deliverbox[6]=Delivery::select('kaju500')->sum('kaju500');
-        $deliverbox[7]=Delivery::select('badam500')->sum('badam500');
-        $deliverbox[8]=Delivery::select('total_kg')->sum('total_kg');
-        $deliverbox[9]=Delivery::select('total_price_pending')->sum('total_price_pending');
+        $deliverbox[6]=Delivery::select('angir_250')->sum('angir_250');
+        $deliverbox[7]=Delivery::select('angir_500')->sum('angir_500');
+        $deliverbox[8]=Delivery::select('kaju500')->sum('kaju500');
+        $deliverbox[9]=Delivery::select('badam500')->sum('badam500');
+        $deliverbox[10]=Delivery::select('total_kg')->sum('total_kg');
+        $deliverbox[11]=Delivery::select('total_price_pending')->sum('total_price_pending');
         
         $pendingbox=array();
         $pendingbox[0]=$orderbox[0]-$deliverbox[0];
@@ -98,6 +108,8 @@ class ProductionController extends Controller {
         $pendingbox[5]=$orderbox[5]-$deliverbox[5];
         $pendingbox[6]=$orderbox[6]-$deliverbox[6];
         $pendingbox[7]=$orderbox[7]-$deliverbox[7];
+        $pendingbox[8]=$orderbox[8]-$deliverbox[8];
+        $pendingbox[9]=$orderbox[9]-$deliverbox[9];
         
         $balancebox=array();
         $balancebox[0]=$total[0]-$deliverbox[0];
@@ -108,6 +120,8 @@ class ProductionController extends Controller {
         $balancebox[5]=$total[5]-$deliverbox[5];
         $balancebox[6]=$total[6]-$deliverbox[6];
         $balancebox[7]=$total[7]-$deliverbox[7];
+        $balancebox[8]=$total[8]-$deliverbox[8];
+        $balancebox[9]=$total[9]-$deliverbox[9];
         
         
         $pending_makeing_box=array();
@@ -119,6 +133,8 @@ class ProductionController extends Controller {
         $pending_makeing_box[5]=max($pendingbox[5]-$balancebox[5], 0);
         $pending_makeing_box[6]=max($pendingbox[6]-$balancebox[6], 0);
         $pending_makeing_box[7]=max($pendingbox[7]-$balancebox[7], 0);
+        $pending_makeing_box[8]=max($pendingbox[8]-$balancebox[8], 0);
+        $pending_makeing_box[9]=max($pendingbox[9]-$balancebox[9], 0);
         
         return view('production.index', compact('productions','total','totalprice','fulltotalprice','fullKg','orderbox','deliverbox','pendingbox','balancebox','pending_makeing_box'));
     }
@@ -140,10 +156,10 @@ class ProductionController extends Controller {
      */
     public function store(Request $request) {
         $production = new Production($request->all());
-        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500))/1000;
+        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500)+($request->angir_250 * 250)+($request->angir_500 * 500))/1000;
          
         
-        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->kaju500 * 370)+($request->badam500 * 370);
+        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->angir_250 * 200)+($request->angir_500 * 400)+($request->kaju500 * 370)+($request->badam500 * 370);
         $production->total_kg=$kg;
         $production->total_price=$total;
         
@@ -184,9 +200,9 @@ class ProductionController extends Controller {
 
     public function update($id, Request $request) {
         $production = Production::findOrFail($id);
-        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500))/1000;
+        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500)+($request->angir_250 * 250)+($request->angir_500 * 500))/1000;
           
-        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->kaju500 * 370)+($request->badam500 * 370);
+        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300)+($request->angir_250 * 200)+($request->angir_500 * 400)+($request->kaju500 * 370)+($request->badam500 * 370);
         $production->total_kg=$kg;
         $production->total_price=$total;
         $production->kajukatri_250= $request->kajukatri_250;
@@ -197,6 +213,10 @@ class ProductionController extends Controller {
         $production->ghari_500= $request->ghari_500; 
         $production->kaju500= $request->kaju500;
         $production->badam500= $request->badam500; 
+        $production->angir_250= $request->angir_250;
+        $production->angir_500= $request->angir_500; 
+        $production->date= $request->date; 
+         $production->time= $request->time; 
         
         if ($production->update()) {
             return redirect('me-admin/production')->with('success', 'production was successfully updated.');

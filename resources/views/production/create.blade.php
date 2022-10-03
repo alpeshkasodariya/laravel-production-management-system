@@ -63,6 +63,14 @@
                                     <label class="form-control-label" for="ghari_500">{{ __('ghari_500') }}</label> 
                                     {!! Form::number('ghari_500', null, array('class' => 'form-control form-control-alternative','placeholder'=>'ghari_500','required' => 'required' )) !!}
                                 </div> 
+                                <div class="form-group{{ $errors->has('angir_250') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="angir_250">{{ __('angir_250') }}</label> 
+                                    {!! Form::number('angir_250', null, array('class' => 'form-control form-control-alternative','placeholder'=>'angir_250','required' => 'required' )) !!}
+                                </div> 
+                                <div class="form-group{{ $errors->has('angir_500') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="ghari_500">{{ __('angir_500') }}</label> 
+                                    {!! Form::number('angir_500', null, array('class' => 'form-control form-control-alternative','placeholder'=>'angir_500','required' => 'required' )) !!}
+                                </div>
                                 <div class="form-group{{ $errors->has('kaju500') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="kaju500">{{ __('kaju500') }}</label> 
                                     {!! Form::number('kaju500', null, array('class' => 'form-control form-control-alternative','placeholder'=>'kaju500','required' => 'required' )) !!}

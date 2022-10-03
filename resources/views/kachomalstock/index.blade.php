@@ -1,6 +1,11 @@
 @extends('layouts.app', ['page' => __('Kachomal'), 'pageSlug' => 'kachomalstock'])
 
 @section('content')
+<?php 
+use App\Kachomal;
+use App\KachomalDeliver;
+
+?>
 <div class="row">
     <div class="col-md-12">
         <div class="card ">
@@ -9,48 +14,45 @@
                     <div class="col-8">
                         <h4 class="card-title">{{ __('Kachomalstock') }}</h4>
                     </div>
-                    <div class="col-4 text-right">
-                        <a href="{{ URL::to('me-admin/kachomalstock/create') }}" class="btn btn-sm btn-primary">{{ __('Add Kachomalstock') }}</a>
-                    </div>
+                    
                 </div>
             </div>
-            <div class="card-body">
+             <div class="card-body">
                 @include('alerts.success') 
                 <div class="table-responsive"> 
                         <table id="table" class="table table-striped cell-border table-hover dt-responsive" cellspacing="0" width="100%"> 
                         <thead class=" text-primary">
                             <tr>
-                                <th scope="col">{{ __('Id') }}</th>   
-                                <th scope="col">Action</th>
+                                <th scope="col">{{ __('Id') }}</th>
+                                <th scope="col">{{ __('Item Name') }}</th>    
+                                <th scope="col">{{ __('Stock Total_kg') }}</th>  
+                                <th scope="col">{{ __('Deliver Total_kg') }}</th>  
+                                <th scope="col">{{ __('Available Total_kg') }}</th>
+                                 
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($kachomalstock))
-                            @foreach ($kachomalstock as $st)
-                            <tr>
-                                <td>{{ $st->id }}</td> 
-                                
-                                <td class="text-center">
-                                    <div class="order-action">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                        <a class="" href="{{ URL::to('me-admin/kachomal/' . $st->id . '/edit' ) }}"><i class="tim-icons icon-pencil" aria-hidden="true"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                        <form action="{{ route('me-admin.kachomal.destroy', $st->id)}}" method="post">
-                                            @csrf
-                                            @method('POST') 
-
-                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this kachomal?") }}') ? this.parentElement.submit() : ''"><i class="tim-icons icon-trash-simple"></i></button>
-                                        </form> 
-                                    </div> 
-                                </td> 
-                            </tr>
-                            @endforeach
+                            @if(!empty($kachomal))
+                                @foreach ($kachomal as $st)
+                                <tr>
+                                    <td>{{ $st->id }}</td>
+                                    <td>{{ $st->kachomal_name }}</td>  
+                                    <td class="darkbluecolor">{{ $st->total_kg }}</td>  
+                                    <td class="bcolor">
+                                    <?php 
+                                    echo $totaldeliver=KachomalDeliver::where('kachomal_name',$st->id)->sum('total_kg');
+                                    
+                                    ?>
+                                    </td>
+                                    <td class="greencolor"><?php echo $st->total_kg-$totaldeliver;?></td>  
+                                    </td> 
+                                </tr>
+                                @endforeach
                             @endif
                         </tbody>
                     </table>
-                </div>
-                 
-                 
-            </div> 
+                </div> 
+            </div>
         </div>
     </div>
 </div>  

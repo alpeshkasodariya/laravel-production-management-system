@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\KachomalDeliver;   
 use Redirect;  
+use App\Kachomal; 
 
 class KachomalDeliverController extends Controller {
 
@@ -35,7 +36,7 @@ class KachomalDeliverController extends Controller {
      * @return Response
      */
     public function create() {
-         $kachomal = Kachomal::all()->pluck('name', 'id');
+         $kachomal = Kachomal::all()->pluck('kachomal_name', 'id');
         return view('kachomaldeliver.create',compact('kachomal'));
     }
 
@@ -79,16 +80,16 @@ class KachomalDeliverController extends Controller {
      */
     public function edit($id) {
         $kachomaldeliver = KachomalDeliver::find($id);
-        $kachomal = Kachomal::all()->pluck('name', 'id');
+        $kachomal = Kachomal::all()->pluck('kachomal_name', 'id');
         return view('kachomaldeliver.edit', compact('kachomal','kachomaldeliver'));
     }
 
     public function update($id, Request $request) {
         $kachomaldeliver = KachomalDeliver::findOrFail($id);
+         
         
         
-        
-        if ($kachomaldeliver->update()) {
+        if ($kachomaldeliver->update($request->all())) {
             return redirect('me-admin/kachomaldeliver')->with('success', 'kachomaldeliver was successfully updated.');
         } else {
             return Redirect::route('me-admin/kachomaldeliver')->withInput()->with('error', "There was an issue creating kachomaldeliver. Please try again.");

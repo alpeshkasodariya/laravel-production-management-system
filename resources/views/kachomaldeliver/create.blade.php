@@ -26,34 +26,34 @@
                          <div class="row"> 
 
                             <div class="col-md-6"> 
+                                <div class="form-group{{ $errors->has('kachomal_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="kachomal_id">{{ __('kachomal') }}</label> 
+                                    {!! Form::select('kachomal_name',$kachomal ,null, array('class' => 'form-control js-example-basic-single', 'placeholder'=>'Select kachomal ','required' => 'required')) !!}
+                                </div> 
+                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-email">{{ __('Date') }}</label> 
+                                     {!! Form::date('date', null, array('class' => 'form-control form-control-alternative','placeholder'=>'date','required' => 'required' )) !!}
+ 
+                                </div> 
+                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-email">{{ __('Time') }}</label> 
+                                     {!! Form::time('time', null, array('class' => 'form-control form-control-alternative','placeholder'=>'time','required' => 'required' )) !!}
+                                    
+                                </div>
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="name">{{ __('Name') }}</label> 
-                                    {!! Form::select('name',$mahatma ,null, array('class' => 'form-control js-example-basic-single', 'placeholder'=>'Select Mahatma','required' => 'required')) !!}
+                                    <label class="form-control-label" for="name">{{ __('delivername') }}</label> 
+                                    {!! Form::text('delivername', null, array('class' => 'form-control form-control-alternative yellowcolor','placeholder'=>'delivername')) !!}
                                 </div>  
-                                <div class="form-group{{ $errors->has('kajukatri_250') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="kajukatri_250">{{ __('kajukatri_250') }}</label> 
-                                    {!! Form::number('kajukatri_250', null, array('class' => 'form-control form-control-alternative','placeholder'=>'kajukatri_250','required' => 'required' )) !!}
+                                <div class="form-group{{ $errors->has('total_kg') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="total_kg">{{ __('total_kg') }}</label> 
+                                    {!! Form::number('total_kg', null, array('class' => 'form-control form-control-alternative','placeholder'=>'total_kg','required' => 'required' )) !!}
                                 </div> 
                                  
 
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group{{ $errors->has('total_kg') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="total_kg">{{ __('total_kg') }}</label> 
-                                    {!! Form::text('total_kg', null, array('class' => 'form-control form-control-alternative yellowcolor','placeholder'=>'total_kg','readonly'=>'readonly' )) !!}
-                                </div> 
-                                <div class="form-group{{ $errors->has('total_price') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="area">{{ __('total_price') }}</label> 
-                                    {!! Form::number('total_price', null, array('class' => 'form-control form-control-alternative bluecolor','placeholder'=>'total_price','readonly'=>'readonly')) !!}
-                                </div> 
-                                <div class="form-group{{ $errors->has('paid_price') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="area">{{ __('paid_price') }}</label> 
-                                    {!! Form::number('paid_price', null, array('class' => 'form-control form-control-alternative greencolor','placeholder'=>'paid_price')) !!}
-                                </div> 
-                                <div class="form-group{{ $errors->has('pending_price') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="area">{{ __('pending_price') }}</label> 
-                                    {!! Form::number('pending_price', null, array('class' => 'form-control form-control-alternative redcolor','placeholder'=>'pending_price','readonly'=>'readonly')) !!}
-                                </div> 
+                                 
+                                 
                             </div> 
                             <div class="col-sm-12">  
                                 <div class="form-group">

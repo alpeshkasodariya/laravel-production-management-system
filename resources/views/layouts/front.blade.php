@@ -32,8 +32,8 @@ $agent = new Agent();
     </style>
     <body class="maga-custom">
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <a class="navbar-brand" href="{{ URL::to('/') }}"><img src='{{ url('/') }}/public/uploads/ll.jpeg'
-                                                                    alt="logo" style="width: 60px;background-color: maroon;"></a>
+            <a class="navbar-brand" href="{{ URL::to('/') }}"><img src='{{ url('/') }}/public/uploads/dbf-logo-new.svg'
+                                                                    alt="logo" style="width: 93px;background-color: maroon;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -55,7 +55,7 @@ $agent = new Agent();
         </nav>
         <div class="wrapper wrapper-full-page">
             <div class="full-page">
-                <h1 class="ordertitle"> Sweet Order</h1>
+                <h1 class="ordertitle">Surat Mithai Order</h1>
                 <div class="content">
                     <div class="container">
                         @yield('content')

@@ -21,7 +21,12 @@
                         <thead class=" text-primary">
                             <tr>
                                 <th scope="col">{{ __('Id') }}</th>
-                                <th scope="col">{{ __('Name') }}</th>   
+                                <th scope="col">{{ __('Item name') }}</th>   
+                                <th scope="col">{{ __('TotalKg') }}</th>   
+                                <th scope="col">{{ __('Delivername') }}</th>   
+                                <th scope="col">{{ __('date') }}</th>   
+                                <th scope="col">{{ __('time') }}</th>   
+                                
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -30,7 +35,12 @@
                             @foreach ($kachomaldeliver as $st)
                             <tr>
                                 <td>{{ $st->id }}</td>
-                                <td>{{ $st->name }}</td>  
+                                <td>{{ $st->Kachomal->kachomal_name }}</td> 
+                                 <td>{{ $st->total_kg }}</td> 
+                                <td>{{ $st->delivername }}</td>  
+                                <td>{{ $st->date }}</td>  
+                                <td>{{ $st->time }}</td>  
+                                
                                 
                                 <td class="text-center">
                                     <div class="order-action">

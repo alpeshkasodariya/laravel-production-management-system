@@ -30,7 +30,7 @@
                              <div class="col-md-6">  
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="kajukatri_250">{{ __('Item name') }}</label> 
-                                    {!! Form::text('name', null, array('class' => 'form-control form-control-alternative','placeholder'=>'Item name','required' => 'required' )) !!}
+                                    {!! Form::text('kachomal_name', null, array('class' => 'form-control form-control-alternative','placeholder'=>'Item name','required' => 'required' )) !!}
                                 </div>  
                                 <div class="form-group{{ $errors->has('rate') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="rate">{{ __('Rate') }}</label> 

@@ -28,6 +28,8 @@
                                 <th scope="col">{{ __('c_500') }}</th> 
                                 <th scope="col">{{ __('g_250') }}</th> 
                                 <th scope="col">{{ __('g_500') }}</th> 
+                                <th scope="col">{{ __('angir_250') }}</th> 
+                                <th scope="col">{{ __('angir_500') }}</th> 
                                 <th scope="col">{{ __('Kaju') }}</th> 
                                 <th scope="col">{{ __('Badam') }}</th> 
                                 <th scope="col">{{ __('total_kg') }}</th> 
@@ -47,6 +49,8 @@
                                 <td>{{ $st->chiki_500 }}</td>
                                 <td>{{ $st->ghari_250 }}</td>
                                 <td>{{ $st->ghari_500 }}</td>
+                                <td>{{ $st->angir_250 }}</td>
+                                <td>{{ $st->angir_500 }}</td>
                                 <td>{{ $st->kaju500 }}</td>
                                 <td>{{ $st->badam500 }}</td>
                                 <td>{{ $st->total_kg }}</td>
@@ -84,6 +88,7 @@
                                 <th colspan="2">{{ __('kajukatri') }}</th>  
                                 <th colspan="2">{{ __('chiki') }}</th>  
                                 <th colspan="2">{{ __('ghari') }}</th>  
+                                 <th colspan="2">{{ __('angir') }}</th>  
                                  <th scope="col"></th>
                                  <th scope="col"></th>
                                 <th scope="col">{{ __('total_kg') }}</th> 
@@ -98,6 +103,8 @@
                                 <th scope="col">{{ __('500gm') }}</th>  
                                 <th scope="col">{{ __('250gm') }}</th>  
                                 <th scope="col">{{ __('500gm') }}</th>  
+                                 <th scope="col">{{ __('250gm') }}</th>  
+                                <th scope="col">{{ __('500gm') }}</th> 
                                 <th scope="col">{{ __('Kaju') }}</th>  
                                 <th scope="col">{{ __('Badaam') }}</th>  
                                 <th scope="col">{{ __('total_kg') }}</th> 
@@ -115,8 +122,10 @@
                                 <td><?php echo $total[5] ?></td> 
                                 <td><?php echo $total[6] ?></td> 
                                 <td><?php echo $total[7] ?></td>  
-                                <td><?php echo $total[8] ?>(kg)</td> 
-                                <td><?php echo $total[9] ?></td> 
+                                <td><?php echo $total[8] ?></td> 
+                                <td><?php echo $total[9] ?></td>
+                                <td><?php echo $total[10] ?>(kg)</td> 
+                                <td><?php echo $total[11] ?></td> 
                             </tr>
                             <tr> 
                                 <td>Total Deliver Box Amount (Rs.)</td>  
@@ -128,6 +137,8 @@
                                 <td class="greencolor" ><?php echo $totalprice[5] ?></td>  
                                 <td class="greencolor" ><?php echo $totalprice[6] ?></td>  
                                 <td class="greencolor" ><?php echo $totalprice[7] ?></td>     
+                                <td class="greencolor" ><?php echo $totalprice[8] ?></td>    
+                                <td class="greencolor" ><?php echo $totalprice[9] ?></td>    
                                 <td></td>
                                 <td></td>   
                             </tr>
@@ -136,8 +147,9 @@
                                 <td class="bcolor" colspan="2"><?php echo $fullKg[0] ?> (kg)</td>  
                                 <td class="bcolor" colspan="2"><?php echo $fullKg[1] ?> (kg)</td>  
                                 <td class="bcolor" colspan="2"><?php echo $fullKg[2] ?> (kg)</td>  
-                                <td class="bcolor"><?php echo $fullKg[3] ?> (kg)</td>  
+                                 <td class="bcolor" colspan="2"><?php echo $fullKg[3] ?> (kg)</td>  
                                 <td class="bcolor"><?php echo $fullKg[4] ?> (kg)</td>  
+                                <td class="bcolor"><?php echo $fullKg[5] ?> (kg)</td>  
                                 <td></td>
                                 <td></td>   
                             </tr>  

@@ -24,6 +24,8 @@ class CreatePasswordResetsTable extends Migration
             $table->bigInteger('chiki_500');
             $table->bigInteger('ghari_250');
             $table->bigInteger('ghari_500');
+            $table->bigInteger('angir_250');
+            $table->bigInteger('angir_500');
             $table->bigInteger('kaju500');
             $table->bigInteger('badam500'); 
             $table->string('total_kg');

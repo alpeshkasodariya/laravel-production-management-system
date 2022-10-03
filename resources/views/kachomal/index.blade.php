@@ -33,7 +33,7 @@
                                 @foreach ($kachomal as $st)
                                 <tr>
                                     <td>{{ $st->id }}</td>
-                                    <td>{{ $st->name }}</td>  
+                                    <td>{{ $st->kachomal_name }}</td>  
                                     <td>{{ $st->rate }}</td> 
                                     <td>{{ $st->total_kg }}</td> 
                                     <td>{{ $st->total_price }}</td> 

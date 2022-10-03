@@ -34,12 +34,14 @@ class OrderController extends Controller {
         $total[3]=Order::select('chiki_500')->sum('chiki_500');
         $total[4]=Order::select('ghari_250')->sum('ghari_250');
         $total[5]=Order::select('ghari_500')->sum('ghari_500');
-        $total[6]=Order::select('ghari_250')->sum('kaju500');
-        $total[7]=Order::select('ghari_500')->sum('badam500');
-        $total[8]=Order::select('total_kg')->sum('total_kg');
-        $total[9]=Order::select('total_price')->sum('total_price');
-        $total[10]=Order::select('paid_price')->sum('paid_price');
-        $total[11]=Order::select('pending_price')->sum('pending_price');
+        $total[6]=Order::select('angir_250')->sum('angir_250');
+        $total[7]=Order::select('angir_500')->sum('angir_500');
+        $total[8]=Order::select('kaju500')->sum('kaju500');
+        $total[9]=Order::select('badam500')->sum('badam500');
+        $total[10]=Order::select('total_kg')->sum('total_kg');
+        $total[11]=Order::select('total_price')->sum('total_price');
+        $total[12]=Order::select('paid_price')->sum('paid_price');
+        $total[13]=Order::select('pending_price')->sum('pending_price');
         
         $totalprice=array();
         $totalprice[0]=$total[0]*170;
@@ -47,25 +49,30 @@ class OrderController extends Controller {
         $totalprice[2]=$total[2]*170;
         $totalprice[3]=$total[3]*340;
         $totalprice[4]=$total[4]*150;
-        $totalprice[5]=$total[5]*300; 
-        $totalprice[6]=$total[6]*370;
-        $totalprice[7]=$total[7]*370; 
+        $totalprice[5]=$total[5]*300;  
+        $totalprice[6]=$total[6]*200;
+        $totalprice[7]=$total[7]*400;
+        $totalprice[8]=$total[8]*370;
+        $totalprice[9]=$total[9]*370; 
+
         
         
         $fulltotalprice=array();
         $fulltotalprice[0]=$totalprice[0]+$totalprice[1];
         $fulltotalprice[1]=$totalprice[2]+$totalprice[3];
-        $fulltotalprice[2]=$totalprice[4]+$totalprice[5];
-        $fulltotalprice[3]=$totalprice[6];
-        $fulltotalprice[4]=$totalprice[7];
+        $fulltotalprice[2]=$totalprice[4]+$totalprice[5]; 
+        $fulltotalprice[3]=$totalprice[6]+$totalprice[7];
+        $fulltotalprice[4]=$totalprice[8];
+        $fulltotalprice[5]=$totalprice[9];
         
         
         $fullKg=array();
         $fullKg[0]=(($total[0]*250) + ($total[1]*500))/ 1000;
         $fullKg[1]=(($total[2]*250) + ($total[3]*500))/ 1000;
         $fullKg[2]=(($total[4]*250) + ($total[5]*500))/ 1000;
-        $fullKg[3]=($total[6]*500)/ 1000;
-        $fullKg[4]=($total[7]*500)/ 1000;
+        $fullKg[3]=(($total[6]*250) + ($total[7]*500))/ 1000;
+        $fullKg[4]=($total[8]*500)/ 1000;
+        $fullKg[5]=($total[9]*500)/ 1000;
          
         
         // Show the page
@@ -90,9 +97,9 @@ class OrderController extends Controller {
     public function store(Request $request) {
         $order = new Order($request->all());
         
-        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500))/1000;
+        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500)+($request->angir_250 * 250)+($request->angir_500 * 500))/1000;
        
-        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300) +($request->kaju500 * 370)+($request->badam500 * 370 );
+        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->angir_250 * 200)+($request->angir_500 * 400)+($request->ghari_500 * 300) +($request->kaju500 * 370)+($request->badam500 * 370 );
         $order->total_kg=$kg;
         $order->total_price=$total;
         $order->paid_price=$request->paid_price; 
@@ -142,10 +149,12 @@ class OrderController extends Controller {
         $order->ghari_500= $request->ghari_500; 
         $order->kaju500= $request->kaju500;
         $order->badam500= $request->badam500; 
+        $order->angir_250= $request->angir_250;
+        $order->angir_500= $request->angir_500; 
         
-        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500))/1000;
+        $kg=(($request->kajukatri_250 * 250)+($request->kajukatri_500 * 500)+($request->chiki_250 * 250)+($request->chiki_500 * 500)+($request->ghari_250 * 250)+($request->ghari_500 * 500)+($request->kaju500 * 500)+($request->badam500 * 500)+($request->angir_250 * 250)+($request->angir_500 * 500))/1000;
        
-        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->ghari_500 * 300) +($request->kaju500 * 370)+($request->badam500 * 370 );
+        $total=($request->kajukatri_250 * 170)+($request->kajukatri_500 * 340)+($request->chiki_250 * 170)+($request->chiki_500 * 340)+($request->ghari_250 * 150)+($request->angir_250 * 200)+($request->angir_500 * 400)+($request->ghari_500 * 300) +($request->kaju500 * 370)+($request->badam500 * 370 );
         $order->total_kg=$kg;
         $order->total_price=$total;
         $order->paid_price=$request->paid_price; 

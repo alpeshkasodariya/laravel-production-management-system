@@ -29,6 +29,8 @@
                                 <th scope="col">{{ __('c_500') }}</th> 
                                 <th scope="col">{{ __('g_250') }}</th> 
                                 <th scope="col">{{ __('g_500') }}</th> 
+                                <th scope="col">{{ __('angir_250') }}</th> 
+                                <th scope="col">{{ __('angir_500') }}</th> 
                                 <th scope="col">{{ __('Kaju') }}</th> 
                                 <th scope="col">{{ __('Badam') }}</th> 
                                 <th scope="col">{{ __('total_kg') }}</th> 
@@ -49,6 +51,8 @@
                                 <td>{{ $st->chiki_500 }}</td>
                                 <td>{{ $st->ghari_250 }}</td>
                                 <td>{{ $st->ghari_500 }}</td>
+                                <td>{{ $st->angir_250 }}</td>
+                                <td>{{ $st->angir_500 }}</td> 
                                 <td>{{ $st->kaju500 }}</td>
                                 <td>{{ $st->badam500 }}</td>
                                 <td>{{ $st->total_kg }}</td>
@@ -84,6 +88,7 @@
                                 <th colspan="2">{{ __('kajukatri') }}</th>  
                                 <th colspan="2">{{ __('chiki') }}</th>  
                                 <th colspan="2">{{ __('ghari') }}</th>  
+                                <th colspan="2">{{ __('angir') }}</th> 
                                 <th scope="col">{{ __('Kaju') }}</th> 
                                 <th scope="col">{{ __('Badam') }}</th> 
                                 <th scope="col">{{ __('total_kg') }}</th> 
@@ -92,6 +97,8 @@
                             </tr>
                             <tr>
                                 <th scope="col">{{ __('Id') }}</th>
+                                <th scope="col">{{ __('250gm') }}</th>  
+                                <th scope="col">{{ __('500gm') }}</th>  
                                 <th scope="col">{{ __('250gm') }}</th>  
                                 <th scope="col">{{ __('500gm') }}</th>  
                                 <th scope="col">{{ __('250gm') }}</th>  
@@ -117,6 +124,8 @@
                                 <td><?php echo $total[7] ?></td> 
                                 <td><?php echo $total[8] ?></td> 
                                 <td><?php echo $total[9] ?></td> 
+                                <td><?php echo $total[10] ?></td> 
+                                <td><?php echo $total[11] ?></td> 
                             </tr>
                             <tr> 
                                 <td>Total Box Amount (Rs.)</td>  
@@ -128,6 +137,8 @@
                                 <td><?php echo $totalprice[5] ?></td>
                                 <td><?php echo $totalprice[6] ?></td>
                                 <td><?php echo $totalprice[7] ?></td>
+                                <td><?php echo $totalprice[8] ?></td>
+                                <td><?php echo $totalprice[9] ?></td>
                                 <td></td>  
                                 <td></td> 
                             </tr>
@@ -136,8 +147,8 @@
                                 <td class="greencolor" colspan="2"><?php echo $fulltotalprice[0] ?><small>(Rs)</small></td>  
                                 <td class="greencolor" colspan="2"><?php echo $fulltotalprice[1] ?><small>(Rs)</small></td>  
                                 <td class="greencolor" colspan="2"><?php echo $fulltotalprice[2] ?><small>(Rs)</small></td>  
-                                <td class="greencolor"  ><?php echo $fulltotalprice[3] ?><small>(Rs)</small></td>  
-                                <td class="greencolor"  ><?php echo $fulltotalprice[4] ?><small>(Rs)</small></td>  
+                                <td class="greencolor"  colspan="2"><?php echo $fulltotalprice[3] ?><small>(Rs)</small></td>  
+                                <td class="greencolor" colspan="2" ><?php echo $fulltotalprice[4] ?><small>(Rs)</small></td>  
                                 <td></td>
                                 <td></td> 
                             </tr>
@@ -146,8 +157,9 @@
                                 <td class="bcolor" colspan="2"><?php echo $fullKg[0] ?> (kg)</td>  
                                 <td class="bcolor" colspan="2"><?php echo $fullKg[1] ?> (kg)</td>  
                                 <td class="bcolor" colspan="2"><?php echo $fullKg[2] ?> (kg)</td>
-                                <td class="bcolor"  ><?php echo $fullKg[3] ?> (kg)</td>
+                                <td class="bcolor" colspan="2"><?php echo $fullKg[3] ?> (kg)</td>
                                 <td class="bcolor"  ><?php echo $fullKg[4] ?> (kg)</td>
+                                <td class="bcolor"  ><?php echo $fullKg[5] ?> (kg)</td>
                                 <td></td>
                                 <td></td>   
                             </tr>
@@ -161,8 +173,10 @@
                                 <td class="darkbluecolor"><?php echo $orderbox[5] ?></td> 
                                 <td class="darkbluecolor"><?php echo $orderbox[6] ?></td>
                                 <td class="darkbluecolor"><?php echo $orderbox[7] ?></td>
-                                <td class="darkbluecolor"><?php echo $orderbox[8] ?>(kg)</td>
+                                <td class="darkbluecolor"><?php echo $orderbox[8] ?></td>
                                 <td class="darkbluecolor"><?php echo $orderbox[9] ?></td>
+                                <td class="darkbluecolor"><?php echo $orderbox[10] ?>(kg)</td>
+                                <td class="darkbluecolor"><?php echo $orderbox[11] ?></td>
                             </tr>
                             <tr> 
                                 <td>Delivered Total Box </td>
@@ -174,8 +188,10 @@
                                 <td class="gcolor"><?php echo $deliverbox[5] ?></td> 
                                 <td class="gcolor"><?php echo $deliverbox[6] ?></td>
                                 <td class="gcolor"><?php echo $deliverbox[7] ?></td>
-                                <td class="gcolor"><?php echo $deliverbox[8] ?>(kg)</td>
+                                <td class="gcolor"><?php echo $deliverbox[8] ?></td>
                                 <td class="gcolor"><?php echo $deliverbox[9] ?></td>
+                                <td class="gcolor"><?php echo $deliverbox[10] ?></td>
+                                <td class="gcolor"><?php echo $deliverbox[11] ?></td>
                             </tr>
                             <tr> 
                                 <td>Delivered Pending Box</td>
@@ -187,6 +203,8 @@
                                 <td class="ycolor"><?php echo $pendingbox[5] ?></td>
                                 <td class="ycolor"><?php echo $pendingbox[6] ?></td>
                                 <td class="ycolor"><?php echo $pendingbox[7] ?></td>
+                                <td class="ycolor"><?php echo $pendingbox[8] ?></td>
+                                <td class="ycolor"><?php echo $pendingbox[9] ?></td>
                                 <td></td>  
                                 <td></td>  
                             </tr>
@@ -200,6 +218,8 @@
                                 <td class="pcolor"><?php echo $balancebox[5] ?></td>
                                 <td class="pcolor"><?php echo $balancebox[6] ?></td>
                                 <td class="pcolor"><?php echo $balancebox[7] ?></td>
+                                <td class="pcolor"><?php echo $balancebox[8] ?></td>
+                                <td class="pcolor"><?php echo $balancebox[9] ?></td>
                                 <td></td>  
                                 <td></td>  
                             </tr>
@@ -213,6 +233,8 @@
                                 <td class="redcolor"><?php echo $pending_makeing_box[5] ?></td>
                                 <td class="redcolor"><?php echo $pending_makeing_box[6] ?></td>
                                 <td class="redcolor"><?php echo $pending_makeing_box[7] ?></td>
+                                <td class="redcolor"><?php echo $pending_makeing_box[8] ?></td>
+                                <td class="redcolor"><?php echo $pending_makeing_box[9] ?></td>
                                 <td></td>  
                                 <td></td>  
                             </tr> 
